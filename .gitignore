@@ -1,0 +1,8 @@
+*~
+*#
+
+# OpenSCAD output formats
+*.png
+*.jpg
+*.stl
+tmp/

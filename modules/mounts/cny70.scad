@@ -2,7 +2,7 @@
 // Mount for CNY70 to measure dome speed
 //
 
-include <../../config/config.scad>;
+include <../../config/config.scad>; // clr
 
 module mount_cny70(draw_parts=false) {
     // mount for CNY70 and 2 LEDs
@@ -12,15 +12,15 @@ module mount_cny70(draw_parts=false) {
         color(c_part)
             translate([0, 0, 17])
             rotate([90, 0, 0])
-            cny70(0);
+            cny70();
         color(c_part)
             translate([-9, 4, 17])
             rotate([90, 0, 0])
-            led(5, 0);
+            led(5);
         color(c_part)
             translate([9, 4, 17])
             rotate([90, 0, 0])
-            led(5, 0);
+            led(5);
     }
 }
 
@@ -29,7 +29,7 @@ module mount_cny70(draw_parts=false) {
 // parts
 //
 
-module cny70(clearance) {
+module cny70(clearance=0) {
     cny70_h = 6 + clearance;
     cube([7 + clearance, 7 + clearance, cny70_h], true);
     // simulate 4 pins
@@ -38,14 +38,13 @@ module cny70(clearance) {
         cube([3, 3, pin_h], true);
 }
 
-module led(diameter, clearance) {
+module led(diameter, clearance=0) {
     cylinder(h=7, d=diameter+clearance);
     cylinder(h=1, d=diameter+0.5+clearance);
 }
 
 module mount() {
-    clr = 0.3;
-    clr_small = 0.1;
+    overlap = 0.1;
 
     // cny70 mount
     off = 17;
@@ -56,7 +55,7 @@ module mount() {
     translate ([0, 0, off])
     rotate([90, 0, 0])
         difference() {
-        cube([l, h+clr_small, th], true);
+        cube([l, h+overlap, th], true);
         // holes for CNY70 and 2 LEDs
         cny70(clr);
         translate([led_d+4, 0, -4]) led(5, clr);
@@ -76,7 +75,7 @@ module mount() {
     // ring mount
     screw_d = 3;
     base_l = conn_w+screw_d*2+6*th;
-    translate([0, 0, th/2])
+    translate([0, screw_d/2+th/2, 0])
         difference() {
         cube([base_l, screw_d+2*th, th], true);
         // holes for screws

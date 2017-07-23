@@ -3,7 +3,7 @@
 //
 
 // clearing for mounts
-clr = 0.3;
+clr = 0.5;
 
 // globals
 $fn=30;

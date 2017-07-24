@@ -27,5 +27,24 @@ dome_middle_ring_gap = 0.5;
 // offsets
 dome_middle_ring_offset = dome_base_ring_h + dome_base_middle_ring_gap;
 dome_bottom = dome_middle_ring_offset + dome_middle_ring_h
-    + dome_middle_ring_gap; // from 1 inch ring
+    + dome_middle_ring_gap;
 dome_rings_total_h = dome_bottom;
+
+dome_thickness = 1.5;
+
+
+//
+// holes (circular)
+//
+
+// list of holes
+// hole specified by [d, a, h]
+// d .. diameter
+// a .. angle counter-clockwise from front
+// l .. length of arc to circle bottom from dome_bottom
+dome_holes = [
+    // holo projectors
+    [50, 30, 20]
+    // front light
+    // back light
+    ];

@@ -1,5 +1,6 @@
 include <config/config.scad>;
 
+use <modules/dome.scad>;
 use <modules/frame.scad>;
 use <modules/dome_rings.scad>;
 use <modules/mounts/cny70.scad>;
@@ -9,6 +10,9 @@ frame();
 
 translate([0, 0, frame_total_h])
 dome_rings();
+
+translate([0, 0, frame_total_h + dome_bottom])
+dome();
 
 translate([150, 0, 0])
 rotate([0, 0, 90])

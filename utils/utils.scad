@@ -24,3 +24,9 @@ module ring(h, do, th) {
             cylinder(h=h+2, d=do-2*th);
     }
 }
+
+// radiant to degree
+function deg(rad) = rad * 180 / PI;
+
+// degree to radiants
+function rad(deg) = deg * PI / 180;

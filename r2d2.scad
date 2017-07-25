@@ -1,9 +1,9 @@
 include <config/config.scad>;
 
-use <modules/dome.scad>;
-use <modules/frame.scad>;
-use <modules/dome_rings.scad>;
-use <modules/mounts/cny70.scad>;
+use <r2d2/frame.scad>;
+use <r2d2/dome.scad>;
+use <r2d2/dome_rings.scad>;
+use <mounts/cny70.scad>;
 
 
 frame();

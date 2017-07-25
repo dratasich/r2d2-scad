@@ -2,7 +2,7 @@
 // Mount for CNY70 to measure dome speed
 //
 
-include <../../config/config.scad>; // clr
+include <../config/config.scad>; // clr
 
 module mount_cny70(draw_parts=false) {
     // mount for CNY70 and 2 LEDs

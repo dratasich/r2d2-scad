@@ -2,6 +2,7 @@
 // Dome Modules
 //
 
+include <../utils/utils.scad> // rad, deg
 include <../config/config.scad>;
 
 

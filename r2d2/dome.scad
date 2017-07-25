@@ -17,11 +17,11 @@ module dome() {
 
 // calculate elevation angle from height over bottom ring
 function angle_from_height(h) =
-    asin((h/dome_ratio) / (dome_diameter/2));
+    deg(asin((h/dome_ratio) / (dome_diameter/2)));
 
 // calculate elevation angle from arc length over bottom
 // caveat: does not work with a dome_ratio != 1
-function angle_from_arc(s) = s / (dome_diameter/2);
+function angle_from_arc(s) = deg(s / (dome_diameter/2));
 
 // calculate arc from chord
 // caveat: does not work with a dome_ratio != 1
@@ -45,13 +45,26 @@ module dome_outer_skin() {
             cube([dome_diameter+1, dome_diameter+1, dome_diameter]);
 
         // cut circular holes (holo projector, lights)
-        for (h = dome_holes) {
+        for (h = dome_holes_circular) {
             d = h[0];
             az = h[1]; // angle from front
             l = h[2] + arc_from_chord(d)/2;
-            ay = 90-deg(angle_from_arc(l)); // angle from bottom
+            ay = 90 - angle_from_arc(l); // angle from bottom
             rotate([0, ay, az])
                 cylinder(h=dome_diameter+1, d=d, center=true);
+        }
+
+        // cut polygonal holes (radar eye)
+        for (h = dome_holes_polygonal) {
+            points = h[0];
+            paths = h[1];
+            o = (points[0][0] - points[1][0])/2; // center of baseline offset
+            az = 90 + h[2]; // move base line of polygon to y-axis
+            ax = 90 - angle_from_arc(h[3]); // angle from bottom
+            rotate([ax, 0, az])
+                translate([o, 0, 0])
+                linear_extrude(height=dome_diameter+1)
+                polygon(points, paths);
         }
     }
 }

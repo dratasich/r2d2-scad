@@ -1,5 +1,5 @@
 //
-// Dome Measures from Custom Builds
+// Dome Measures from Custom Build
 // (metric)
 //
 
@@ -34,17 +34,30 @@ dome_thickness = 1.5;
 
 
 //
-// holes (circular)
+// holes
 //
 
-// list of holes
+// list of circular holes
 // hole specified by [d, a, h]
 // d .. diameter
-// a .. angle counter-clockwise from front
+// a .. angle counter-clockwise from front of circle center/bottom
 // l .. length of arc to circle bottom from dome_bottom
-dome_holes = [
+dome_holes_circular = [
     // holo projectors
     [50, 30, 20]
     // front light
     // back light
+    ];
+
+// list of polygonal holes
+// hole specified by a [points, paths, a, l]
+// points .. list of points, first point should by [0,0] defining left bottom
+//           corner of a polygon
+// paths .. list of paths (leave empty or undef if the polygon is defined by
+//          the points and its order
+// a .. angle counter-clockwise from front of the point [0,0]
+// l .. length of arc to polygon point [0,0]
+dome_holes_polygonal = [
+    // radar eye
+    [ [[0,0], [60,0], [60,70], [20,70]], [], 50, 50]
     ];

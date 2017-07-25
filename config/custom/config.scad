@@ -5,10 +5,13 @@
 // clearing for mounts
 clr = 0.5;
 
+// activate stl imports
+draw_stl = false;
+
 // globals
 $fn=30;
 
-// include all measures (you may want to overwrite below)
+// include all measures
 include <droid.scad>
 include <dome.scad>
 

@@ -3,11 +3,19 @@
 // (metric)
 //
 
-// dome
+include <../../utils/utils.scad>;
+
+// dome size
 dome_diameter = 360; // dome diameter at ring
-dome_height = 180; // height of dome from top of 1 inch ring
+dome_height = 180; // height of dome from top of all rings
+
+// scale factor to original CS:R dome
+dome_csr_factor = dome_diameter / metric(18.16);
+
+// original dome is a stretched-up half-sphere
 dome_ratio = dome_height / (dome_diameter/2);
 
+// diameter of dome rings
 dome_ring_d = 363;
 
 // base ring (1 inch)
@@ -61,3 +69,11 @@ dome_holes_polygonal = [
     // radar eye
     [ [[0,0], [60,0], [60,70], [20,70]], [], 50, 50]
     ];
+
+
+//
+// stl position
+//
+
+// align angle around z to meet the dome front (positive x-axis)
+stl_az = 90;

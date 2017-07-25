@@ -7,6 +7,9 @@ include <../config/config.scad>;
 
 
 module dome() {
+    if (draw_stl) {
+        color(c_blue) radar_eye();
+    }
     color(c_dome) dome_outer_skin();
 }
 
@@ -66,5 +69,35 @@ module dome_outer_skin() {
                 linear_extrude(height=dome_diameter+1)
                 polygon(points, paths);
         }
+    }
+}
+
+
+//
+// external: parts loaded from stl
+//
+// Positioning needs tweaking when the dome_ratio != 1, i.e., shape of your
+// dome is not like original CS:R. Hence no constants are used, you will have
+// to debug and place it anyway here.
+//
+// TODO: option for CS:R (to skip translate and rotate and just scale)
+//
+
+module radar_eye() {
+    /*
+    // original position for alignment
+    #scale(dome_csr_factor)
+        import("../stl/radar_eye.stl");
+    */
+    // apply radar eye from stl to the custom dome
+    difference() {
+        rotate([0, 0, stl_az])
+            translate([0, 14, -15])
+            rotate([-5, 0, 0])
+            translate([0, -15, 0])
+            scale(dome_csr_factor)
+            import("../stl/radar_eye.stl");
+        // cut overlapping parts
+        sphere(d=dome_diameter);
     }
 }

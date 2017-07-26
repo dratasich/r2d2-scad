@@ -1,8 +1,8 @@
 include <config/config.scad>;
 
-use <r2d2/frame.scad>;
-use <r2d2/dome.scad>;
-use <r2d2/dome_rings.scad>;
+use <senna/frame.scad>;
+use <csr/dome.scad>;
+use <csr/dome_rings.scad>;
 use <mounts/cny70.scad>;
 
 

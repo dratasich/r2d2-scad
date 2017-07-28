@@ -85,8 +85,10 @@ module dome_outer_skin() {
 
 module radar_eye() {
     /*
+    color([0,0,0.5], 0.5) sphere(d=dome_diameter);
     // original position for alignment
-    #scale(dome_csr_factor)
+    #rotate([0, 0, stl_az])
+        scale(dome_csr_factor)
         import("../stl/radar_eye.stl");
     */
     // apply radar eye from stl to the custom dome
@@ -98,6 +100,6 @@ module radar_eye() {
             scale(dome_csr_factor)
             import("../stl/radar_eye.stl");
         // cut overlapping parts
-        sphere(d=dome_diameter);
+        //sphere(d=dome_diameter);
     }
 }

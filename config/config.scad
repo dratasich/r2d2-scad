@@ -2,9 +2,6 @@
 // Configuration
 //
 
-// globals
-$fn=30;
-
 // load all official measures
 /* include <csr/droid.scad> */
 /* include <csr/dome.scad> */
@@ -20,4 +17,4 @@ include <custom/color.scad>
 draw_stl = false;
 
 // clearance for mounts
-clr = 0.5;
+clr = 0.4;

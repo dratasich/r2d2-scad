@@ -20,4 +20,4 @@ rotate([0, 0, 90])
 mount_cny70(draw_parts=true);
 
 translate([0, 0, frame_total_h + dome_bottom])
-psi(dome_psi_front, draw_parts=false);
+psi(dome_psi_front, th=1.2, draw_parts=false);

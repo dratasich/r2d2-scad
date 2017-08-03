@@ -6,7 +6,7 @@ include <../config/config.scad>; // clr
 include <../utils/utils.scad>; // move_intersect_sphere
 
 
-module psi(hole, draw_parts=false) {
+module psi(hole, th=1.5, draw_parts=false) {
     // extract hole vector
     d = hole[0];
     a = hole[1];
@@ -17,11 +17,11 @@ module psi(hole, draw_parts=false) {
     ay = -angle_from_arc(s, dome_diameter); // angle from bottom
 
     // mount, aligned to dome shape
-    color(c_print) psi_mount(d, ay, az);
+    color(c_print) psi_mount(d, ay, az, th=th);
 
     if (draw_parts) {
         // opal glass
-        color(c_white, 0.7) psi_glass(d, ay, az, clearance=clr);
+        color(c_white, 0.7) psi_glass(d, ay, az, th=th, clearance=clr);
     }
 }
 
@@ -38,7 +38,7 @@ module psi_led(diameter, clearance=0) {
 module psi_glass(d, ay, az, th=1.5, clearance=0) {
     overlap = 0.1;
     ho = dome_thickness;
-    hi = 2.5-clearance;
+    hi = 3*th-clearance;
     // outer part (goes through dome)
     intersection() {
         rotate([0, ay+90, az])
@@ -54,7 +54,7 @@ module psi_glass(d, ay, az, th=1.5, clearance=0) {
         rotate([0, ay, az])
             translate([dome_diameter/2-(ho+hi)/2, 0, 0])
             rotate([0, -90, 0])
-            cylinder(h=ho+hi, d=d+2*th+clearance, center=true);
+            cylinder(h=ho+hi, d=d+2*th-clearance, center=true);
         sphere(d=dome_diameter-2*ho+overlap);
     }
 }
@@ -69,8 +69,8 @@ module psi_mount(d, ay, az, th=1.5) {
             difference() {
             // mount
             union() {
-                // stick to dome
-                ring(2*th, d+10*th, 5*th);
+                // stick to dome (inner diameter must equal housing)
+                ring(h=4*th, do=d+10*th, th=5*th);
                 // housing
                 translate([0, 0, th-overlap])
                     ring(h, d+2*th, th);

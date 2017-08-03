@@ -38,29 +38,29 @@ dome_bottom = dome_middle_ring_offset + dome_middle_ring_h
     + dome_middle_ring_gap;
 dome_rings_total_h = dome_bottom;
 
-dome_thickness = 1.5;
+dome_thickness = 1.2;
 
 
 //
 // holes
 //
 
-dome_psi_front = [33, 10, 13];
-
-// list of circular holes
 // hole specified by [d, a, l]
 // d .. diameter
 // a .. angle counter-clockwise from front of circle center/bottom
 // l .. length of arc to circle bottom from dome_bottom
+dome_psi_front = [24.2, 10, 13];
+dome_psi_rear = [37.4, 160, 16];
+
+// list of circular holes
 dome_holes_circular = [
     // holo projectors
     [48.5, 30, 7],
     //[40, 30, 7],
     //[50, 30, 20],
-    // front psi
+    // psi
     dome_psi_front,
-    // rear psi
-    //[50, 30, 20]
+    dome_psi_rear,
     ];
 
 // list of polygonal holes

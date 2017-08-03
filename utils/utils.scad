@@ -30,3 +30,12 @@ function deg(rad) = rad * 180 / PI;
 
 // degree to radiants
 function rad(deg) = deg * PI / 180;
+
+// calculate elevation angle from arc length over bottom
+// caveat: does not work with a dome_ratio != 1
+function angle_from_arc(s, d) = deg(s / (d/2));
+
+// calculate arc from chord
+// caveat: does not work with a dome_ratio != 1
+function arc_from_chord(c, d) = 2 * rad(asin(c/d)) * (d/2);
+

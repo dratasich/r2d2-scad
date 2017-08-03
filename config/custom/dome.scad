@@ -45,18 +45,22 @@ dome_thickness = 1.5;
 // holes
 //
 
+dome_psi_front = [33, 10, 13];
+
 // list of circular holes
-// hole specified by [d, a, h]
+// hole specified by [d, a, l]
 // d .. diameter
 // a .. angle counter-clockwise from front of circle center/bottom
 // l .. length of arc to circle bottom from dome_bottom
 dome_holes_circular = [
     // holo projectors
-    [50, 30, 20],
-    [50, 30, 20],
-    [50, 30, 20]
+    [48.5, 30, 7],
+    //[40, 30, 7],
+    //[50, 30, 20],
     // front psi
+    dome_psi_front,
     // rear psi
+    //[50, 30, 20]
     ];
 
 // list of polygonal holes
@@ -69,7 +73,7 @@ dome_holes_circular = [
 // l .. length of arc to polygon point [0,0]
 dome_holes_polygonal = [
     // radar eye
-    [ [[0,0], [60,0], [60,70], [20,70]], [], 50, 50]
+    [ [[0,0], [75,0], [57,59], [15,59]], [], 0, 66.5]
     // front logic displays
     // rear logic display
     ];

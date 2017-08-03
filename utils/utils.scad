@@ -39,3 +39,15 @@ function angle_from_arc(s, d) = deg(s / (d/2));
 // caveat: does not work with a dome_ratio != 1
 function arc_from_chord(c, d) = 2 * rad(asin(c/d)) * (d/2);
 
+// operator module that moves an object to the outside of the dome on the
+// specified position and intersects the object with the dome; this way the
+// object's outside shape gets aligned to the dome (for psi, logic displays,
+// etc.)
+module move_intersect_sphere(d=0, ay=0, az=0) {
+    intersection() {
+        rotate([0, ay, az]) // rotate to position on dome
+            translate([d/2, 0, 0]) // move to outside of the dome
+            children();
+        sphere(d=d); // intersect with dome
+    }
+}

@@ -63,18 +63,25 @@ dome_holes_circular = [
     dome_psi_rear,
     ];
 
-// list of polygonal holes
 // hole specified by a [points, paths, a, l]
 // points .. list of points, first point should by [0,0] defining left bottom
 //           corner of a polygon
 // paths .. list of paths (leave empty or undef if the polygon is defined by
 //          the points and its order
 // a .. angle counter-clockwise from front of the point [0,0]
-// l .. length of arc to polygon point [0,0]
+// l .. length of arc to polygon point [0,0] from dome_bottom
+
+dome_ld_front = [[0,0], [33,0], [33,20], [0,20]];
+dome_ld_front_up = [ dome_ld_front, [], -15, 37.5];
+dome_ld_front_lo = [ dome_ld_front, [], -15, 11.5];
+
+// list of polygonal holes
 dome_holes_polygonal = [
     // radar eye
-    [ [[0,0], [75,0], [57,59], [15,59]], [], 0, 66.5]
+    [ [[0,0], [75,0], [57,59], [15,59]], [], 0, 66.5],
     // front logic displays
+    dome_ld_front_up,
+    dome_ld_front_lo,
     // rear logic display
     ];
 
